@@ -1,6 +1,6 @@
 const texts = [
     "I Love You",
-    "♥️ bao linh ♥️",
+    "♥️Tớ Iu Cậu Lắm ạ♥️",
     "Ti amo",
     "Aishiteru",
     "Saranghaeyo",
