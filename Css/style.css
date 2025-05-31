@@ -3,10 +3,9 @@ body {
     padding: 0;
     overflow: hidden;
     height: 100vh;
-    font-family: "Parisienne", cursive;
+    font-family: 'Pacifico', cursive;
     perspective: 1000px;
     background: radial-gradient(circle at center, #200236, #000000 80%);
-    /* Đổi nền thành màu đen */
 }
 
 #scene {
@@ -19,45 +18,34 @@ body {
 
 .falling-text {
     position: absolute;
-    font-size: 20px;
     white-space: nowrap;
     pointer-events: none;
-    opacity: 1;
     transform-style: preserve-3d;
-    animation: fadeInOut 2s infinite alternate;
     font-weight: bold;
     user-select: none;
-    color: #fff;
+    transition: transform 0.3s ease, top 0.3s ease;
+    animation: fadeInOut 3s infinite ease-in-out;
 }
 
 .falling-text.text-1 {
-    text-shadow:
-        0 0 5px #25d7fb,
-        0 0 10px #25d7fb,
-        0 0 15px #25d7fb,
-        0 0 20px #25d7fb,
-        0 0 25px #25d7fb,
-        0 0 30px #25d7fb;
+    font-family: 'Lobster', cursive;
+    font-size: 24px;
+    color: #00f7ff;
+    text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #0ff;
 }
 
 .falling-text.text-2 {
-    text-shadow:
-        0 0 5px #00ff66,
-        0 0 10px #00ff66,
-        0 0 15px #00ff66,
-        0 0 20px #00ff66,
-        0 0 25px #00ff66,
-        0 0 30px #00ff66;
+    font-family: 'Pacifico', cursive;
+    font-size: 26px;
+    color: #00ff66;
+    text-shadow: 0 0 10px #0f6, 0 0 20px #0f6, 0 0 30px #0f6;
 }
 
 .falling-text.text-3 {
-    text-shadow:
-        0 0 5px #ff63a2,
-        0 0 10px #ff63a2,
-        0 0 15px #ff63a2,
-        0 0 20px #ff63a2,
-        0 0 25px #ff63a2,
-        0 0 30px #ff63a2;
+    font-family: 'Lobster', cursive;
+    font-size: 28px;
+    color: #ff63a2;
+    text-shadow: 0 0 10px #f69, 0 0 20px #f69, 0 0 30px #f69;
 }
 
 .heart,
@@ -111,9 +99,7 @@ body {
 }
 
 @keyframes float {
-
-    0%,
-    100% {
+    0%, 100% {
         transform: translateY(0);
         opacity: 0;
     }
