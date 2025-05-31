@@ -1,6 +1,6 @@
 const texts = [
     "I Love You",
-    "♥️ Mao Bông ♥️",
+    "♥️ bao linh ♥️",
     "Ti amo",
     "Aishiteru",
     "Saranghaeyo",
@@ -27,12 +27,6 @@ document.addEventListener("mousemove", (e) => {
     const centerY = window.innerHeight / 2;
     targetRotateY = ((e.clientX - centerX) / centerX) * maxRotate;
     targetRotateX = ((e.clientY - centerY) / centerY) * maxRotate;
-});
-
-let touchStartX = 0, touchStartY = 0;
-document.addEventListener("touchstart", (e) => {
-    touchStartX = e.touches[0].clientX;
-    touchStartY = e.touches[0].clientY;
 });
 
 document.addEventListener("touchmove", (e) => {
@@ -62,15 +56,12 @@ function createFallingText(initial = false) {
     const zLayer = Math.random() * 400 - 200;
     text.style.left = startX + "px";
     text.style.fontSize = `${Math.random() * 20 + 18}px`;
-    text.style.transform = `translateZ(${zLayer}px)`;
+    text.style.transform = `translateZ(${zLayer}px) rotate(${Math.random() * 20 - 10}deg)`;
 
-    // Xuất hiện ở vị trí ngẫu nhiên hoặc ở trên cùng
-    const randomStart = Math.random() < 0.5; // 50% bắt đầu từ vị trí ngẫu nhiên
-    const startY = randomStart
-        ? Math.random() * window.innerHeight // Ngẫu nhiên trong màn hình
-        : -50; // Từ trên rơi xuống
-
+    const randomStart = Math.random() < 0.5;
+    const startY = randomStart ? Math.random() * window.innerHeight : -50;
     text.style.top = startY + "px";
+
     scene.appendChild(text);
 
     let posY = startY;
@@ -90,11 +81,10 @@ function createFallingText(initial = false) {
     animate();
 }
 
-
-function createHeart(initial = false, initialY = -50) {
+function createHeart(initial = false) {
     const heart = document.createElement("div");
     heart.className = "heart";
-    heart.innerHTML = `<img src="${images[Math.floor(Math.random() * images.length)]}" alt="♡" />`;//"♡";
+    heart.innerHTML = `<img src="${images[Math.floor(Math.random() * images.length)]}" alt="♡" />`;
 
     const startX = Math.random() * window.innerWidth;
     const zLayer = Math.random() * 400 - 200;
@@ -120,7 +110,7 @@ function createHeart(initial = false, initialY = -50) {
     animateHeart();
 }
 
-function createRose(initial = false, initialY = -50) {
+function createRose(initial = false) {
     const rose = document.createElement("div");
     rose.className = "rose";
     rose.innerText = "🌺";
@@ -149,18 +139,10 @@ function createRose(initial = false, initialY = -50) {
     animateRose();
 }
 
-// Initialize with a higher density of elements
-for (let i = 0; i < 30; i++) {
-    createFallingText(true);
-}
-for (let i = 0; i < 10; i++) {
-    createHeart(true);
-}
-for (let i = 0; i < 5; i++) {
-    createRose(true);
-}
+for (let i = 0; i < 30; i++) createFallingText(true);
+for (let i = 0; i < 10; i++) createHeart(true);
+for (let i = 0; i < 5; i++) createRose(true);
 
-// Increase frequency of new elements
 setInterval(createFallingText, 300);
 setInterval(createHeart, 1000);
 setInterval(createRose, 1000);
